@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>作品大全</title>
+	<meta name="description" content="Neat">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" user-scalable="no">
+	<link rel="stylesheet" href="https://www.17sucai.com/preview/61021/2021-06-29/%E5%93%8D%E5%BA%94%E5%BC%8F%E4%B8%9A%E5%8A%A1%E4%BB%8B%E7%BB%8D/css/style.css">
+	<script>//搜索功能
+        var oldKey0 = "";
+        var index0 = -1;var oldCount0 = 0;
+        var newflag = 0;
+        var currentLength = 0;
+        function wordSearch(flg) {
+            var key = $("#key").val(); //取key值
+            if (!key) {
+                return; //key为空则退出
+            }
+            getArray();
+            focusNext(flg);
+        }
+        function focusNext(flg) {
+            if (newflag == 0) {//如果新搜索,index清零
+                index0 = 0;
+            }
+            if (!flg) {
+                if (oldCount0 != 0) {//如果还有搜索
+                    if (index0 < oldCount0) {//左边如果没走完，走左边
+                        focusMove(index0);
+                        index0++;
+                    } else if (index0 == oldCount0) {//都走完了
+                        index0 = 0;
+                        focusMove(index0);
+                        index0++;
+                    }
+                    else {
+                        index0 = 0;//没确定
+                        focusMove(index0);
+                        index0++;
+                    }
+                }
+            } else {
+                if (oldCount0 != 0) {//如果还有搜索
+                    if (index0 <= oldCount0 && index0 > 0) {//左边如果没走完，走左边
+                        index0--;
+                        focusMove(index0);
+                    } else if (index0 == 0) {//都走完了
+                        index0 = oldCount0;
+                        index0--
+                        focusMove(index0);
+                    }
+                }
+            }
+        }
+        function getArray() {
+            newflag = 1;
+            $(".contrast .result").removeClass("res");
+            var key = $("#key").val(); //取key值
+            if (!key) {
+                oldKey0 = "";
+                return; //key为空则退出
+            }
+            if (oldKey0 != key || $(".current").length != currentLength) {
+                //重置
+                index0 = 0;
+                var index = 0;
+                $(".contrast .result").each(function () {
+                    $(this).replaceWith($(this).html());
+                });
+                pos0 = new Array();
+                if ($(".contrast-wrap").hasClass("current")) {
+                    currentLength = $(".current").length;
+                    $(".current .contrast").each(function () {
+                        $(this).html($(this).html().replace(new RegExp(key, "gm"), "<span id='result" + (index++) + "' class='result'>" + key + "</span>")); // 替换
+                    });
+                } else {
+                    $(".contrast-wrap").addClass('current');
+                    currentLength = $(".current").length;
+                    $(".contrast").each(function () {
+                        $(this).html($(this).html().replace(new RegExp(key, "gm"), "<span id='result" + (index++) + "' class='result'>" + key + "</span>")); // 替换
+                    });
+                }
+                //$("#key").val(key);
+                oldKey0 = key;
+                //$(".contrast .result").each(function () {
+                //    $(this).parents('.contrast-wrap').addClass('current');
+                //    pos0.push($(this).offset().top);
+                //});
+                // pos0.push($(".contrast .result:eq(2)").offset().top - $(".contrast .result:eq(2)").parents(".contrast").offset().top);
+                oldCount0 = $(".contrast .result").length;
+                newflag = 0;
+            }
+        }
+        function focusMove(index0) {
+            $(".contrast .result:eq(" + index0 + ")").parents('.contrast-wrap').addClass('current');
+            $(".contrast .result:eq(" + index0 + ")").addClass("res");
+            var top = $(".contrast .result:eq(" + index0 + ")").offset().top + $(".contrast .result:eq(" + index0 + ")").parents(".contrast").scrollTop();
+            var intop = top - $(".contrast .result:eq(" + index0 + ")").parents(".contrast").offset().top;
+            $(".contrast .result:eq(" + index0 + ")").parents(".contrast").animate({ scrollTop: intop }, 200);
+            if ($(".contrast .result:eq(" + index0 + ")").parents(".contrast").scrollTop() == 0) {
+                $("html, body").animate({ scrollTop: top - 200 }, 200);
+            } else {
+                $("html, body").animate({ scrollTop: $(".contrast .result:eq(" + index0 + ")").parents(".contrast").offset().top - 200 }, 200);
+            }
+        }
+        $('#key').change(function () {
+            if ($('#key').val() == "") {
+                index0 = 0;
+                $(".contrast .result").each(function () {
+                    $(this).replaceWith($(this).html());
+                });
+                oldKey0 = "";
+            }
+        });
+    </script>
+</head>
+<body>
+
+	<div class="main-group">
+	 <div class="container" style="z-index: 999" id="searchDiv">
+        <div class="keyword-search">
+            查找：
+            <input id="key" type="text" style="width: 200px;" placeholder="关键词" />
+            <a href="javascript:void(0);" class="prev" onclick='wordSearch(1)'><i class="c-icon"></i></a>
+            <a href="javascript:void(0);" class="next" onclick='wordSearch()'><i class="c-icon"></i></a>
+  
+        </div>
+    </div>
+		<h3 class="header">作品大全</h3>
+		<ul class="items-group">
+		
+		
+		<li class="item">
+				<a href="https://nemo.codemao.cn/qrcode?type=1&workid=109738317">
+					<div class="desc-group">
+						<h3>酷跑联机</h3>
+						<p>
+						这个东西可以操控方块酷跑，可以联机
+						</p>
+					</div>
+				</a>
+			</li>
+		
+		
+		<li class="item">
+				<a href="https://nemo.codemao.cn/qrcode?type=17&workid=115206747">
+					<div class="desc-group">
+						<h3>社区浏览器</h3>
+						<p>
+社区浏览器，搜索功能齐全
+						</p>
+					</div>
+				</a>
+			</li>
+		
+		
+		
+			
+			
+			<li class="item">
+				<a href="https://nemo.codemao.cn/qrcode?type=1&workid=112790063">
+					<div class="desc-group">
+						<h3>联机对战游戏</h3>
+						<p>
+	
+a1
+a2
+						</p>
+					</div>
+				</a>
+			</li>
+			<li class="item">
+				<a href="https://">
+					<div class="desc-group">
+						<h3>测试</h3>
+						<p>
+						*图片*图片*
+						</p>
+					</div>
+				</a>
+			</li>
+			<li class="item">
+				<a href="#">
+					<div class="desc-group">
+						<h3>空</h3>
+						<p>
+						空
+						</p>
+					</div>
+				</a>
+			</li>
+			<li class="item">
+				<a href="#">
+					<div class="desc-group">
+						<h3>空</h3>
+						<p>
+							空
+						</p>
+					</div>
+				</a>
+			</li>
+			<li class="item">
+				<a href="#">
+					<div class="desc-group">
+						<h3>空</h3>
+						<p>
+							空
+						</p>
+					</div>
+				</a>
+			</li>
+			<li class="item">
+				<a href="#">
+					<div class="desc-group">
+						<h3>空</h3>
+						<p>
+					空
+						</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+	
+</body>
+</html>
